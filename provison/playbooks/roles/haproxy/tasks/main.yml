@@ -1,0 +1,19 @@
+---
+- name: Install haproxy
+  yum: 
+    name: haproxy
+    state: latest
+
+- name: Open Port 80
+  firewalld:
+    port: 80/tcp
+    permanent: yes
+    state: enabled
+
+- name: Reload firewalld
+  systemd:
+    name: firewalld
+    state: reloaded
+
+- name: Copy config file
+  template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg

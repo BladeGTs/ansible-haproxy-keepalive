@@ -1,0 +1,13 @@
+- hosts: backends
+  user: root
+  become: true
+  become_user: root
+  roles:
+    - nginx-server-role
+
+- hosts: webservers
+  user: root
+  become: true
+  become_user: root
+  roles:
+    - haproxy

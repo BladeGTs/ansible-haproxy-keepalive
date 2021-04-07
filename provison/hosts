@@ -1,0 +1,13 @@
+[webservers]
+Nginx1 ansible_ssh_host=10.0.0.101 ansible_ssh_private_key_file=../.vagrant/machines/Nginx1/virtualbox/private_key
+Nginx2 ansible_ssh_host=10.0.0.102 ansible_ssh_private_key_file=../.vagrant/machines/Nginx2/virtualbox/private_key
+
+[backends]
+backend1 ansible_ssh_host=10.0.0.103 ansible_ssh_private_key_file=../.vagrant/machines/backend1/virtualbox/private_key
+backend2 ansible_ssh_host=10.0.0.104 ansible_ssh_private_key_file=../.vagrant/machines/backend2/virtualbox/private_key
+
+[keepalived_master]
+Nginx1 ansible_ssh_host=10.0.0.101 ansible_ssh_private_key_file=../.vagrant/machines/Nginx1/virtualbox/private_key
+
+[keepalived_backeup]
+Nginx2 ansible_ssh_host=10.0.0.102 ansible_ssh_private_key_file=../.vagrant/machines/Nginx2/virtualbox/private_key
