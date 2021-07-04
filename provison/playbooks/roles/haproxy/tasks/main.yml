@@ -9,6 +9,12 @@
     port: 80/tcp
     permanent: yes
     state: enabled
+  
+- name: Open port 1267
+  firewalld:
+    port: 1267/tcp
+    permanent: yes
+    state: enabled
 
 - name: Reload firewalld
   systemd:
@@ -17,3 +23,14 @@
 
 - name: Copy config file
   template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+
+- name: Set haproxy_connect_any flag on and keep it persistent across reboots
+  ansible.posix.seboolean:
+    name: haproxy_connect_any
+    state: yes
+    persistant: yes
+    
+- name: Start Haproxy service
+  systemd:
+    name: haproxy
+    state: started

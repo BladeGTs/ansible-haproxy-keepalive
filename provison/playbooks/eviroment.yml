@@ -3,13 +3,17 @@
   become_user: root
   roles:
     - nginx-server-role
+  tags:
+    - backends
 
 - hosts: webservers
   become: true
   become_user: root
   roles:
     - haproxy
-
+  tags:
+   - haproxy
+   
 - hosts: keepalived_master
   become: true
   become_user: root

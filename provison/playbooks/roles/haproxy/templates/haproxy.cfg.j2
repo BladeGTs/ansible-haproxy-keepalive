@@ -39,7 +39,7 @@ defaults
 #---------------------------------------------------------------------
 #HAProxy Monitoring Config
 #---------------------------------------------------------------------
-listen haproxy-stat 10.0.0.80:1267                #Haproxy Monitoring run on port 8080
+listen haproxy-stat *:1267                #Haproxy Monitoring run on port 8080
     mode http
     option forwardfor
     option httpclose
