@@ -1,19 +1,16 @@
-# - hosts: backends
-#   user: root
-#   become: true
-#   become_user: root
-#   roles:
-#     - nginx-server-role
+- hosts: backends
+  become: true
+  become_user: root
+  roles:
+    - nginx-server-role
 
-# - hosts: webservers
-#   user: root
-#   become: true
-#   become_user: root
-#   roles:
-#     - haproxy
+- hosts: webservers
+  become: true
+  become_user: root
+  roles:
+    - haproxy
 
 - hosts: keepalived_master
-  user: root
   become: true
   become_user: root
   roles:
@@ -23,7 +20,6 @@
     priority: 101
 
 - hosts: keepalived_backeup
-  user: root
   become: true
   become_user: root
   roles:
