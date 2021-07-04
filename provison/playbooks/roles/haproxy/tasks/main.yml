@@ -3,6 +3,12 @@
   yum: 
     name: haproxy
     state: latest
+    
+- name: Install dependence python
+  yum:
+    name:
+      - libselinux-python
+      - libsemanage-python
 
 - name: Open Port 80
   firewalld:
@@ -28,8 +34,8 @@
   ansible.posix.seboolean:
     name: haproxy_connect_any
     state: yes
-    persistant: yes
-    
+    persistent: yes
+
 - name: Start Haproxy service
   systemd:
     name: haproxy
